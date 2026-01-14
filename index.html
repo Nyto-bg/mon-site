@@ -2,106 +2,45 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon Portail Pédagogique</title>
-    <style>
-        /* Design inspiré du site Monsieur Garcia */
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            background-color: #f0f2f5;
-            color: #333;
-        }
-
-        /* Barre de navigation en haut */
-        nav {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav a { color: white; text-decoration: none; margin-left: 20px; }
-
-        /* Bannière d'accueil */
-        header {
-            background: white;
-            padding: 40px;
-            text-align: center;
-            border-bottom: 3px solid #3498db;
-        }
-
-        /* Grille pour les matières/cours */
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        /* Cartes de cours */
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.2s;
-        }
-
-        .card:hover { transform: translateY(-5px); }
-
-        .card h3 { color: #3498db; }
-
-        .btn-link {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Professionnel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <nav>
-        <div class="logo"><strong>ESPACE COURS</strong></div>
-        <div>
-            <a href="#">Accueil</a>
-            <a href="#">Documents</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
-
-    <header>
-        <h1>Bienvenue sur mon site de classe</h1>
-        <p>Retrouvez ici tous les documents et ressources utilisés en cours.</p>
+    <header id="header">
+        <a href="#" class="logo">Mon<span>Logo</span></a>
+        <div class="menu-toggle" onclick="toggleMenu();"></div>
+        <ul class="navbar">
+            <li><a href="#accueil" onclick="toggleMenu();">Accueil</a></li>
+            <li><a href="#propos" onclick="toggleMenu();">À propos</a></li>
+            <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+            <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+            <li><a href="#" class="btn-reserver">Réservation</a></li>
+        </ul>
     </header>
 
-    <div class="container">
-        <div class="card">
-            <h3>Niveau 6ème</h3>
-            <p>Documents, exercices et corrections pour les 6èmes.</p>
-            <a href="#" class="btn-link">Voir les cours</a>
+    <section class="banniere" id="accueil">
+        <div class="contenu">
+            <h1>Bienvenue sur notre plateforme</h1>
+            <p>Apprenez à créer des sites web modernes avec HTML et CSS.</p>
+            <a href="#propos" class="btn">En savoir plus</a>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Niveau 5ème</h3>
-            <p>Accédez aux ressources numériques du niveau 5ème.</p>
-            <a href="#" class="btn-link">Accéder</a>
-        </div>
+    <script type="text/javascript">
+        // Fonction pour le menu mobile
+        function toggleMenu(){
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbar = document.querySelector('.navbar');
+            menuToggle.classList.toggle('active');
+            navbar.classList.toggle('active');
+        }
 
-        <div class="card">
-            <h3>Projets & Activités</h3>
-            <p>Les photos et comptes-rendus des activités scolaires.</p>
-            <a href="#" class="btn-link">Découvrir</a>
-        </div>
-    </div>
-
+        // Effet menu collant au défilement
+        window.addEventListener('scroll', function(){
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+    </script>
 </body>
 </html>
